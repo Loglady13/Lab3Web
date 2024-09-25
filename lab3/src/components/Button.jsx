@@ -1,4 +1,4 @@
-const Button = ({ text, color }) => {
+const Button = ({ text, color, onClick }) => {
     const colorClasses = {
       blue: 'bg-blue-600 hover:bg-blue-800',
       red: 'bg-red-600 hover:bg-red-800',
@@ -6,7 +6,7 @@ const Button = ({ text, color }) => {
     };
   
     return (
-      <button className={`px-8 py-2 text-white font-bold rounded-md ${colorClasses[color] || colorClasses.default}`}>
+      <button className={`px-8 py-2 text-white font-bold rounded-md ${colorClasses[color] || colorClasses.default}`} onClick={onClick}>
         {text}
       </button>
     );

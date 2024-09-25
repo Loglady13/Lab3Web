@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
-function TaskRow({ taskDescription, hasAttachments }) {
+function TaskRow({ taskDescription, hasAttachments, onClick }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -10,8 +10,7 @@ function TaskRow({ taskDescription, hasAttachments }) {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 border-b border-gray-300">
-
+    <div className="flex items-center justify-between p-4 border-b border-gray-300" onClick={onClick}> 
       <div className="flex items-center">
         <input
           type="checkbox"
@@ -21,7 +20,6 @@ function TaskRow({ taskDescription, hasAttachments }) {
         />
         <span className="ml-4 font-roboto">{taskDescription}</span>
       </div>
-
       <div className="flex items-center">
         <span className={`mr-4 ${isChecked ? 'text-green-500' : 'text-gray-500'}`}>
           {isChecked ? 'Done' : 'Pending'}

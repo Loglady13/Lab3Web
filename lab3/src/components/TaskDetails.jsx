@@ -1,24 +1,25 @@
-
 import Button from "./Button";
 
-const TaskDetail = ({ task_title, task_description, task_date, attachment }) => {
-    return (
-      <div className="w-[70%] border-gray-400 border-y-2">
-        <div className="flex items-center justify-between px-4 py-4">
-          <h2 className="text-2xl font-roboto ">{task_title}</h2>
-          <p className="font-bold font-roboto ">{task_date}</p>
-        </div>
-        <div className="px-4 py-4">
-          <p className="text-lg font-roboto ">{task_description}</p>
-          <div className="flex justify-center pt-8">
-            <Button text="Delete Task" color="red"/>
-          </div>
-          
-        </div>
-        
+const TaskDetails = ({ task_title, task_description, task_date, deleteTask}) => {
+  
+  const handleDelete = () => {
+    deleteTask(task_title); // Llama a deleteTask con el título de la tarea
+  };
+
+  return (
+    <div className="w-[70%] border-gray-400 border-y-2">
+      <div className="flex items-center justify-between px-4 py-4">
+        <h2 className="text-2xl font-roboto">{task_title}</h2>
+        <p className="font-bold font-roboto">{task_date}</p>
       </div>
-    );
-  }
-  
-  export default TaskDetail;
-  
+      <div className="px-4 py-4">
+        <p className="text-lg font-roboto">{task_description}</p>
+        <div className="flex justify-center pt-8">
+          <Button text="Delete Task" color="red" onClick={handleDelete} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TaskDetails;
