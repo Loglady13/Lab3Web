@@ -33,7 +33,6 @@ const AddTaskFrom = ({ addTask }) => {
           name="task-details"
           value={taskDetails}
           onChange={(e) => setTaskDetails(e.target.value)}
-          required
         />
         <button type="submit">Add Task</button>
       </form>
