@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavigationBar />
+      <NavigationBar addTask={addTask}/>
       <div className='flex w-full font-roboto'>
         <TaskList tasks={tasks} onTaskSelect={setSelectedTask} /> 
         {selectedTask && ( // Muestra TaskDetail solo si hay una tarea seleccionada
@@ -38,9 +38,7 @@ function App() {
         )}
         
       </div>
-      <div>
-        <AddTaskForm addTask={addTask} /> {/*Prueba*/}
-      </div>
+      
     </div>
   );
 }
