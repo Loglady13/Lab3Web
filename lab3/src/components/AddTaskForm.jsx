@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
 
 const AddTaskForm = ({ addTask, onClose }) => {
-  const [taskTitle, setTaskTitle] = useState(''); // vacío por defecto
+  const [taskTitle, setTaskTitle] = useState(''); // empty by default
   const [taskDetails, setTaskDetails] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTask = {
-      title: taskTitle, // Asigna el valor del form
-      details: taskDetails, // Asigna
-      hasAttachments: false, // No tiene attachments
+      title: taskTitle, // Assigns the value of the form
+      details: taskDetails, // Assign
+      hasAttachments: false, // No attachments
     };
-    addTask(newTask); // Llama a addTask desde las props
-    setTaskTitle(''); // Vacía los campos
-    setTaskDetails(''); // Vacía los campos
-    onClose(); // Cierra el formulario después de agregar la tarea
+    
+    // Check if the title already exists
+    if (addTask(newTask)) { 
+      setTaskTitle(''); // Empty the fields
+      setTaskDetails(''); // Empty the fields
+      onClose(); // Close the form and add the task
+    } else {
+      alert('A task with this title already exists!'); // The title already exist
+    }
   };
 
   return (
     <div className='bg-white'>
-      <form onSubmit={handleSubmit} className='m-6'>
+      <form onSubmit={handleSubmit} //Send the form and close the form
+             className='m-6'>
         <div className='flex flex-col text-black'>
           <h2 className='font-bold text-xl'>Add task to To-Do list</h2>
           <input
@@ -38,7 +44,7 @@ const AddTaskForm = ({ addTask, onClose }) => {
                     p-2 mt-2 mb-2 
                     text-sm' 
           />
-          <input
+          <input //It's optional
             type="text"
             name="task-details"
             value={taskDetails}
@@ -57,7 +63,7 @@ const AddTaskForm = ({ addTask, onClose }) => {
         </div>
         <div className='justify-center flex flex-row pt-4 font-bold text-white'>
           <button type='button' 
-                  onClick={onClose} // Cambiado a onClick
+                  onClick={onClose} // Close the form
                   className='
                           bg-red-600 
                           rounded-md 

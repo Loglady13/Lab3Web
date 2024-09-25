@@ -3,9 +3,9 @@ import AddTaskFrom from './AddTaskFrom';
 import TaskList from './TaskList';
 
 const TaskManager = () => {
-  const [tasks, setTasks] = useState([]); //Array de tareas, se asigna array vacío
+  const [tasks, setTasks] = useState([]); //Array of tasks, empty array is assigned
 
-  const addTask = (newTask) => { //Se añade a tasks una nueva
+  const addTask = (newTask) => { //Add a new task
     setTasks([...tasks, newTask]);
   };
 

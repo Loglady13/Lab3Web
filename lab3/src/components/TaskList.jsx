@@ -6,6 +6,7 @@ const TaskList = ({ tasks, onTaskSelect }) => {
   return (
     <div className="w-[30%] h-screen border-gray-400 border-2">
       <SearchBar/>
+      {/* Read the list of tasks */}
       {tasks.length > 0 ? (
         tasks.map((task, index) => (
           <TaskRow
@@ -16,7 +17,7 @@ const TaskList = ({ tasks, onTaskSelect }) => {
           />
         ))
       ) : (
-        <p>No tasks added yet</p>
+        <p>No tasks added yet</p> 
       )}
     </div>
   );

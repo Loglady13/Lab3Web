@@ -3,7 +3,7 @@ import Button from "./Button";
 const TaskDetails = ({ task_title, task_description, task_date, deleteTask}) => {
   
   const handleDelete = () => {
-    deleteTask(task_title); // Llama a deleteTask con el título de la tarea
+    deleteTask(task_title); // Call deleteTask with the task title
   };
 
   return (
