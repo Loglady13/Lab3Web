@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <NavigationBar/>
-      <div className='flex w-full'>
+      <div className='flex w-full font-roboto'>
         <TaskList/>
         <TaskDetail task_title={"Example"} task_date={"29/11/2024"} task_description={"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"}/>
       </div>

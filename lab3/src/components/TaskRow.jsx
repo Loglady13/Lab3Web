@@ -19,7 +19,7 @@ function TaskRow({ taskDescription, hasAttachments }) {
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
-        <span className="ml-4">{taskDescription}</span>
+        <span className="ml-4 font-roboto">{taskDescription}</span>
       </div>
 
       <div className="flex items-center">
