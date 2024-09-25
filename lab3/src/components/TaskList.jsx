@@ -1,9 +1,11 @@
+import SearchBar from './SearchBar';
 import TaskRow from './TaskRow';
 
 const TaskList = ({ tasks, onTaskSelect }) => {
   
   return (
     <div className="w-[30%] h-screen border-gray-400 border-2">
+      <SearchBar/>
       {tasks.length > 0 ? (
         tasks.map((task, index) => (
           <TaskRow

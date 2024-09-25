@@ -2,9 +2,7 @@ import './output.css';
 import NavigationBar from "./components/NavigationBar";
 import TaskDetail from './components/TaskDetails';
 import TaskList from './components/TaskList';
-import AddTaskForm from './components/AddTaskForm';
 import React, { useState } from 'react';
-import Button from './components/Button';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -38,7 +36,7 @@ function App() {
         )}
         
       </div>
-      
+
     </div>
   );
 }

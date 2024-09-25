@@ -13,7 +13,7 @@ const AddTaskBackground = ({ addTask, onClose }) => {
             </div>
 
             <div className="fixed z-20 inset-0 flex justify-center items-center">
-                <AddTaskForm addTask={addTask} onClose={onClose} /> {/* Pasa addTask aquí */}
+                <AddTaskForm addTask={addTask} onClose={onClose} /> 
             </div>
         </div>
     );
