@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const AddTaskForm = ({ onClose }) => {
   const [taskTitle, setTaskTitle] = useState(''); // empty by default
   const [taskDetails, setTaskDetails] = useState('');
+  const [taskAttachments, setTaskAttachments] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,7 +11,8 @@ const AddTaskForm = ({ onClose }) => {
     const newTask = {
       title: taskTitle, // Asignar el valor del formulario
       details: taskDetails, // Asignar
-      hasAttachments: false, // No hay adjuntos
+      hasAttachments: false,
+      attachment: taskAttachments // No hay adjuntos
     };
 
     // Hacer una solicitud POST al backend de Flask
@@ -25,6 +27,7 @@ const AddTaskForm = ({ onClose }) => {
       if (response.ok) {
         setTaskTitle(''); // Limpiar los campos
         setTaskDetails('');
+        setTaskAttachments('');
         onClose(); // Cerrar el formulario después de agregar la tarea
       } else {
         alert('Error al agregar la tarea');
@@ -64,6 +67,22 @@ const AddTaskForm = ({ onClose }) => {
             onChange={(e) => setTaskDetails(e.target.value)}
             placeholder='task details'
             className='
+                    border 
+                    border-gray-300 
+                    rounded-md 
+                    shadow 
+                    bg-slate-100 
+                    pt-6 pb-6 pl-2 
+                    mt-2 mb-3 
+                    text-sm'
+          />
+          <input type="file" 
+          name= 'task-attachment'
+          value={taskAttachments}
+          onChange={(e) => setTaskAttachments(e.target.value)}
+          placeholder='Attachment'
+          accept=".jpg, .jpeg, .png, .gif, .pdf" 
+          className='
                     border 
                     border-gray-300 
                     rounded-md 
