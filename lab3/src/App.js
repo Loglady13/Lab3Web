@@ -1,3 +1,12 @@
+/*
+Lab3-Web
+Integrantes:
+    Sharon Tencio
+    Anthony Arias
+    Raschell Jarquin
+*/
+
+
 import './output.css';
 import NavigationBar from "./components/NavigationBar";
 import TaskDetail from './components/TaskDetails';

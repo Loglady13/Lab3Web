@@ -1,31 +1,44 @@
 import React, { useState } from 'react';
 
-const AddTaskForm = ({ addTask, onClose }) => {
+const AddTaskForm = ({ onClose }) => {
   const [taskTitle, setTaskTitle] = useState(''); // empty by default
   const [taskDetails, setTaskDetails] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTask = {
-      title: taskTitle, // Assigns the value of the form
-      details: taskDetails, // Assign
-      hasAttachments: false, // No attachments
-    };
     
-    // Check if the title already exists
-    if (addTask(newTask)) { 
-      setTaskTitle(''); // Empty the fields
-      setTaskDetails(''); // Empty the fields
-      onClose(); // Close the form and add the task
-    } else {
-      alert('A task with this title already exists!'); // The title already exist
-    }
+    const newTask = {
+      title: taskTitle, // Asignar el valor del formulario
+      details: taskDetails, // Asignar
+      hasAttachments: false, // No hay adjuntos
+    };
+
+    // Hacer una solicitud POST al backend de Flask
+    fetch('http://localhost:5000/api/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newTask), // Convertir el objeto a JSON
+    })
+    .then(response => {
+      if (response.ok) {
+        setTaskTitle(''); // Limpiar los campos
+        setTaskDetails('');
+        onClose(); // Cerrar el formulario después de agregar la tarea
+      } else {
+        alert('Error al agregar la tarea');
+      }
+    })
+    .catch(error => {
+      console.error('Error al conectar con el backend:', error);
+      alert('Hubo un problema al conectar con el servidor');
+    });
   };
 
   return (
     <div className='bg-white'>
-      <form onSubmit={handleSubmit} //Send the form and close the form
-             className='m-6'>
+      <form onSubmit={handleSubmit} className='m-6'>
         <div className='flex flex-col text-black'>
           <h2 className='font-bold text-xl'>Add task to To-Do list</h2>
           <input
@@ -44,7 +57,7 @@ const AddTaskForm = ({ addTask, onClose }) => {
                     p-2 mt-2 mb-2 
                     text-sm' 
           />
-          <input //It's optional
+          <input
             type="text"
             name="task-details"
             value={taskDetails}
@@ -63,7 +76,7 @@ const AddTaskForm = ({ addTask, onClose }) => {
         </div>
         <div className='justify-center flex flex-row pt-4 font-bold text-white'>
           <button type='button' 
-                  onClick={onClose} // Close the form
+                  onClick={onClose} 
                   className='
                           bg-red-600 
                           rounded-md 
